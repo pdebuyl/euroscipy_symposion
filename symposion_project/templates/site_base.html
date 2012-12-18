@@ -21,7 +21,7 @@
 {% endblock %}
 
 {% block topbar_base %}
-    <div class="container">
+    <div class="top-container">
         <header id="masthead">
             <div class="pull-right">
                 <ul class="nav nav-pills">
@@ -55,6 +55,9 @@
             <h1><a href="{% url home %}">{{ SITE_NAME }}</a></h1>
             <h2><a href="{% url home %}"><span style="font-weight: 200;">Brussels, Belgium - August 21-24 2013</span></a> @<a href="http://www.ulb.ac.be/">Université libre de Bruxelles</a></h2>
         </header>
+    </div>
+
+    <div class="container">
         <div class="navbar">
             <div class="navbar-inner">
                 {% block topbar %}
