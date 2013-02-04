@@ -12,35 +12,26 @@ TEMPLATE_DEBUG = DEBUG
 THUMBNAIL_DEBUG = False
 
 # tells Pinax to serve media through the staticfiles app.
-SERVE_MEDIA = DEBUG
+SERVE_MEDIA = True
 
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
+DEFAULT_HTTP_PROTOCOL = "https"
+
 ADMINS = [
-    # ("Your Name", "your_email@domain.com"),
+    ("Pierre de Buyl", "pdebuyl@ulb.ac.be"),
 ]
 
 MANAGERS = ADMINS
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3", # Add "postgresql_psycopg2", "postgresql", "mysql", "sqlite3" or "oracle".
-        "NAME": "dev.db",                       # Or path to database file if using sqlite3.
-        "USER": "",                             # Not used with sqlite3.
-        "PASSWORD": "",                         # Not used with sqlite3.
-        "HOST": "",                             # Set to empty string for localhost. Not used with sqlite3.
-        "PORT": "",                             # Set to empty string for default. Not used with sqlite3.
-    }
-}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = "US/Eastern"
+TIME_ZONE = "Europe/Berlin"
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -83,9 +74,6 @@ STATICFILES_FINDERS = [
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = posixpath.join(STATIC_URL, "admin/")
-
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = "8*br)9@fs!4nzg-imfrsst&oa2udy6z-fqtdk0*e5c1=wn)(t3"
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = [
@@ -174,7 +162,8 @@ FIXTURE_DIRS = [
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 
-EMAIL_BACKEND = "mailer.backend.DbBackend"
+#EMAIL_BACKEND = "mailer.backend.DbBackend"
+EMAIL_BACKEND= "django.core.mail.backends.smtp.EmailBackend"
 
 ACCOUNT_OPEN_SIGNUP = True
 ACCOUNT_USE_OPENID = False
@@ -218,6 +207,7 @@ PROPOSAL_FORMS = {
     "talk": "symposion_project.proposals.forms.TalkProposalForm",
     "poster": "symposion_project.proposals.forms.PosterProposalForm",
 }
+
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
