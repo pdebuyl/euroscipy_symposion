@@ -3,3 +3,4 @@ _build
 dev.db
 *~
 symposion_project/site_media
+/symposion_project/local_settings.py
