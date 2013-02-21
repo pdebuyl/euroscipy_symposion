@@ -19,7 +19,7 @@
             {% if speaker.user == request.user or request.user.is_staff %}
                 <a class="btn pull-right" href="{% url speaker_edit speaker.pk %}">Edit</a>
             {% endif %}
-            <h1>{{ speaker.name }}</h1>
+            <h1>{{ speaker.name }} - {{ speaker.affiliation }}</h1>
             <div class="bio">{{ speaker.biography|safe }}</div>
             
             <h2>Presentations</h2>

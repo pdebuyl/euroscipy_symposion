@@ -17,6 +17,7 @@ class Speaker(models.Model):
     
     user = models.OneToOneField(User, null=True, related_name="speaker_profile")
     name = models.CharField(max_length=100, help_text="As you would like it to appear in the conference program.")
+    affiliation = models.CharField(max_length=100, help_text="For the program and the badge.")
     biography = MarkupField(blank=True, help_text="A little bit about you. Edit using <a href='http://warpedvisions.org/projects/markdown-cheat-sheet/' target='_blank'>Markdown</a>.")
     photo = models.ImageField(upload_to="speaker_photos", blank=True)
     annotation = models.TextField()  # staff only
