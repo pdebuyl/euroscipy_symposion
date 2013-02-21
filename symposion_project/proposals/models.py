@@ -15,7 +15,7 @@ class Proposal(ProposalBase):
         (AUDIENCE_LEVEL_EXPERIENCED, "Experienced"),
     ]
     
-    audience_level = models.IntegerField(choices=AUDIENCE_LEVELS)
+    #audience_level = models.IntegerField(choices=AUDIENCE_LEVELS)
     
     recording_release = models.BooleanField(
         default=True,
