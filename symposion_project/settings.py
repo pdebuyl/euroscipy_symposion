@@ -194,7 +194,7 @@ DEBUG_TOOLBAR_CONFIG = {
     "INTERCEPT_REDIRECTS": False,
 }
 
-MARKITUP_FILTER = ("markdown.markdown", {"safe_mode": True})
+MARKITUP_FILTER = ("markdown.markdown", {"safe_mode": True, "extensions":['extra']})
 MARKITUP_SET = "markitup/sets/markdown"
 MARKITUP_SKIN = "markitup/skins/simple"
 
