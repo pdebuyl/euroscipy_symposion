@@ -22,8 +22,6 @@ class TalkProposalForm(ProposalForm):
         model = TalkProposal
         fields = [
             "title",
-            #"audience_level",
-            "description",
             "abstract",
             "additional_notes",
             "recording_release",
@@ -40,8 +38,6 @@ class TutorialProposalForm(ProposalForm):
         model = TutorialProposal
         fields = [
             "title",
-            #"audience_level",
-            "description",
             "abstract",
             "additional_notes",
             "recording_release",
@@ -59,8 +55,6 @@ class PosterProposalForm(ProposalForm):
         model = PosterProposal
         fields = [
             "title",
-            #"audience_level",
-            "description",
             "abstract",
             "additional_notes",
             "recording_release",
