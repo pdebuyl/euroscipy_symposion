@@ -35,12 +35,7 @@ urlpatterns = patterns("",
     url(r"^schedule/", include("symposion.schedule.urls")),
     url(r"^markitup/", include("markitup.urls")),
     
-    url(r'^products/$', 'plata_simple.views.product_list',
-        name='plata_product_list'),
-    url(r'^products/(?P<object_id>\d+)/$', 'plata_simple.views.product_detail',
-        name='plata_product_detail'),
-    url(r'^shop/', include(shop.urls)),
-    url(r'^reporting/', include('plata.reporting.urls')),
+    url(r"^ticketing/", include("plata_simple.urls")),
 
     url(r"^", include("symposion.cms.urls")),
 
