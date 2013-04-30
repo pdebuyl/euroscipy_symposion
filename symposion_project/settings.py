@@ -224,19 +224,7 @@ PROPOSAL_FORMS = {
 
 #PLATA_PRICE_INCLUDES_TAX = False
 
-POSTFINANCE = {
-    'PSPID': 'plataTEST',
-    'SHA1_IN': 'plataSHA1_IN',
-    'SHA1_OUT': 'plataSHA1_OUT',
-    'LIVE': False,
-    }
-
-PAYPAL = {
-    'BUSINESS': 'example@paypal.com',
-    'LIVE': False,
-    }
-
-PLATA_REPORTING_ADDRESSLINE = 'EuroSciPy 2013 - Université libre de Bruxelles CP231 - Av. F. Roosevelt, 50 - B-1050 Brussels'
+PLATA_PAYMENT_MODULES = [ 'plata.payment.modules.ogone.PaymentProcessor' ]
 
 # PLATA settings
 
