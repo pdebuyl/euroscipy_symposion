@@ -264,6 +264,7 @@
                     <th>#</th>
                     <th>Items</th>
                     <th>Status</th>
+                    <th>Invoice</th>
                 </thead>
                 <tbody>
                     {% for order in user.orders.all %}
@@ -273,6 +274,7 @@
                                 {% for item in order.items.all %} {{ item.name }} <br /> {% endfor %}
                             </td>
                             <td>{{ order.get_status_display }}</td>
+                            <td><a href="/ticketing/reporting/invoice/{{ order.id }}/">Invoice #{{ order.id }}</a></td>
                         </tr>
                     {% endfor %}
                 </tbody>
