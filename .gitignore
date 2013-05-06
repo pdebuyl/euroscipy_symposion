@@ -1,6 +1,7 @@
 _build
 *.pyc
 dev.db
+plata.log
 *~
 symposion_project/site_media
 /symposion_project/local_settings.py

@@ -110,6 +110,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "pinax_utils.context_processors.settings",
     "account.context_processors.account",
     "symposion.reviews.context_processors.reviews",
+    'plata.context_processors.plata_context',
 ]
 
 INSTALLED_APPS = [
@@ -154,6 +155,17 @@ INSTALLED_APPS = [
     
     # project
     "symposion_project.proposals",
+
+    # plata
+    'plata',
+    'plata.contact',
+    'plata.discount',
+    'plata.payment',
+    'plata.product',
+    'plata.shop',
+
+    'plata_simple',
+
 ]
 
 FIXTURE_DIRS = [
@@ -208,6 +220,26 @@ PROPOSAL_FORMS = {
     "poster": "symposion_project.proposals.forms.PosterProposalForm",
 }
 
+# PLATA settings
+
+#PLATA_PRICE_INCLUDES_TAX = False
+
+PLATA_PAYMENT_MODULES = [ 'plata.payment.modules.ogone.PaymentProcessor' ]
+
+# PLATA settings
+
+TEST_RUNNER = 'options.test_utils.test_runner_with_coverage'
+COVERAGE_MODULES = ['plata']
+
+import logging, sys
+logging.basicConfig(
+    filename=os.path.join(PROJECT_ROOT,'plata.log'),
+    format='%(asctime)s %(levelname)s:%(name)s:%(message)s',
+    level=logging.DEBUG,
+    )
+
+PLATA_SHOP_PRODUCT = 'plata_simple.Product'
+CURRENCIES = ('EUR',)
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
