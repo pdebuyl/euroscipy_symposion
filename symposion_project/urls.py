@@ -4,6 +4,8 @@ from django.conf.urls.static import static
 
 from django.views.generic.simple import direct_to_template
 
+from plata_simple.views import shop
+
 from django.contrib import admin
 admin.autodiscover()
 
@@ -33,7 +35,10 @@ urlpatterns = patterns("",
     url(r"^schedule/", include("symposion.schedule.urls")),
     url(r"^markitup/", include("markitup.urls")),
     
+    url(r"^ticketing/", include("plata_simple.urls")),
+
     url(r"^", include("symposion.cms.urls")),
+
 )
 
 
