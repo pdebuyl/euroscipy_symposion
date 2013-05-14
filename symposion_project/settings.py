@@ -220,6 +220,8 @@ PROPOSAL_FORMS = {
     "poster": "symposion_project.proposals.forms.PosterProposalForm",
 }
 
+SYMPOSION_VOTE_THRESHOLD = 2
+
 # PLATA settings
 
 #PLATA_PRICE_INCLUDES_TAX = False
