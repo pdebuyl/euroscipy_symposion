@@ -7,11 +7,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.template import Context, Template
 from django.views.decorators.http import require_POST
 
+from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required
 
 from symposion.conf import settings
 from symposion.proposals.models import ProposalBase, ProposalSection
-from symposion.teams.models import Team
 from symposion.utils.mail import send_email
 
 from symposion.reviews.forms import ReviewForm, SpeakerCommentForm
@@ -120,9 +120,8 @@ def review_admin(request, section_slug):
     def reviewers():
         already_seen = set()
         
-        for team in Team.objects.filter(permissions__codename="can_review_%s" % section_slug):
-            for membership in team.memberships.filter(Q(state="member") | Q(state="manager")):
-                user = membership.user
+        for team in Group.objects.filter(permissions__codename="can_review_%s" % section_slug):
+            for user in team.user_set.iterator():
                 if user.pk in already_seen:
                     continue
                 already_seen.add(user.pk)
