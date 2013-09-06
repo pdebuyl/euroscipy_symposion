@@ -167,5 +167,7 @@ class SupportingDocument(models.Model):
     file = models.FileField(upload_to=uuid_filename)
     description = models.CharField(max_length=140)
 
+    is_public = models.BooleanField(help_text='If checked, the document will be visible publicly. This is intended for the upload of slides and/or posters.')
+
     def download_url(self):
         return reverse("proposal_document_download", args=[self.pk, os.path.basename(self.file.name).lower()])

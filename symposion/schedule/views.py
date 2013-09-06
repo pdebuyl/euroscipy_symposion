@@ -128,5 +128,6 @@ def schedule_presentation_detail(request, pk):
     
     ctx = {
         "presentation": presentation,
+        "docs": presentation.proposal.supporting_documents.filter(is_public=True),
     }
     return render(request, "schedule/presentation_detail.html", ctx)

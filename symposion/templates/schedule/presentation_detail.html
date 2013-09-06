@@ -24,4 +24,14 @@
     <h3>Abstract</h3>
     
     <div class="abstract">{{ presentation.abstract|safe }}</div>
+
+    {% if docs %}
+    <h3>Attached files</h3>
+    <div>
+        {% for doc in docs %}
+            <a href="{{ doc.download_url }}">{{ doc.description }}</a>
+        {% endfor %}
+    </div>
+    {% endif %}
+
 {% endblock %}

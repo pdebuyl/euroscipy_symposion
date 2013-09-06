@@ -38,4 +38,5 @@ class SupportingDocumentCreateForm(forms.ModelForm):
         fields = [
             "file",
             "description",
+            "is_public",
         ]
