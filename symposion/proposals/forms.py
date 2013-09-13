@@ -1,7 +1,7 @@
 from django import forms
 from django.db.models import Q
 
-from symposion.proposals.models import SupportingDocument
+from symposion.proposals.models import SupportingDocument, SupportingURL
 # from markitup.widgets import MarkItUpWidget
 
 
@@ -39,4 +39,13 @@ class SupportingDocumentCreateForm(forms.ModelForm):
             "file",
             "description",
             "is_public",
+        ]
+
+class SupportingURLCreateForm(forms.ModelForm):
+
+    class Meta:
+        model = SupportingURL
+        fields = [
+            "url",
+            "description",
         ]

@@ -171,3 +171,9 @@ class SupportingDocument(models.Model):
 
     def download_url(self):
         return reverse("proposal_document_download", args=[self.pk, os.path.basename(self.file.name).lower()])
+
+class SupportingURL(models.Model):
+
+    proposal = models.ForeignKey(ProposalBase, related_name="supporting_urls")
+    url = models.URLField()
+    description = models.CharField(max_length=140)

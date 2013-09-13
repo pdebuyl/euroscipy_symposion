@@ -15,4 +15,7 @@ urlpatterns = patterns("symposion.proposals.views",
     url(r"^(\d+)/document/create/$", "document_create", name="proposal_document_create"),
     url(r"^document/(\d+)/delete/$", "document_delete", name="proposal_document_delete"),
     url(r"^document/(\d+)/([^/]+)$", "document_download", name="proposal_document_download"),
+
+    url(r"^(\d+)/url/create/$", "url_create", name="proposal_url_create"),
+    url(r"^url/(\d+)/delete/$", "url_delete", name="proposal_url_delete"),
 )

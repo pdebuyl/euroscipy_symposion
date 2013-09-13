@@ -53,4 +53,24 @@
             No supporting documents attached to this proposal.
         {% endif %}
     </dd>
+    <dt>URLs</dt>
+    <dd>
+        {% if proposal.supporting_urls.exists %}
+            <table class="table table-striped">
+                {% for url in proposal.supporting_urls.all %}
+                    <tr>
+                        <td><a href="{{ url.url }}">{{ url.description }}</a></td>
+                        <td>
+                        <form style="margin: 0;" method="post" action="{% url proposal_url_delete url.pk %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-mini">delete</button>
+                        </form>
+                    </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            No supporting URLs attached to this proposal.
+        {% endif %}
+    </dd>
 </dl>

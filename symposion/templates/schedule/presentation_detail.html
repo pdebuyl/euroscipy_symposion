@@ -34,4 +34,13 @@
     </div>
     {% endif %}
 
+    {% if urls %}
+    <h3>Supporting URLs</h3>
+    <div>
+        {% for url in urls %}
+            <a href="{{ url.url }}">{{ url.description }}</a>
+        {% endfor %}
+    </div>
+    {% endif %}
+
 {% endblock %}

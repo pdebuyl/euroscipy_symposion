@@ -1,0 +1,17 @@
+{% extends "proposals/base.html" %}
+
+{% load bootstrap_tags %}
+
+{% block page_title %}Add URL to '{{ proposal.title }}'{% endblock %}
+
+{% block body %}
+    <form method="POST" action="" enctype="multipart/form-data" class="form-horizontal">
+        {% csrf_token %}
+        <fieldset>
+            {{ form|as_bootstrap }}
+        </fieldset>
+        <div class="form-actions">
+            <input class="btn btn-primary" type="submit" value="Save" />
+        </div>
+    </form>
+{% endblock %}

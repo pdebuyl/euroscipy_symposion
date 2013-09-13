@@ -15,11 +15,11 @@ from django.contrib.auth.decorators import login_required
 
 from account.models import EmailAddress
 from symposion.proposals.models import ProposalBase, ProposalSection, ProposalKind
-from symposion.proposals.models import SupportingDocument, AdditionalSpeaker
+from symposion.proposals.models import SupportingDocument, AdditionalSpeaker, SupportingURL
 from symposion.speakers.models import Speaker
 from symposion.utils.mail import send_email
 
-from symposion.proposals.forms import AddSpeakerForm, SupportingDocumentCreateForm
+from symposion.proposals.forms import AddSpeakerForm, SupportingDocumentCreateForm, SupportingURLCreateForm
 
 
 def get_form(name):
@@ -383,4 +383,38 @@ def document_delete(request, pk):
     if request.method == "POST":
         document.delete()
     
+    return redirect("proposal_detail", proposal_pk)
+
+@login_required
+def url_create(request, proposal_pk):
+    queryset = ProposalBase.objects.select_related("speaker")
+    proposal = get_object_or_404(queryset, pk=proposal_pk)
+    proposal = ProposalBase.objects.get_subclass(pk=proposal.pk)
+
+    if proposal.cancelled:
+        return HttpResponseForbidden()
+
+    if request.method == "POST":
+        form = SupportingURLCreateForm(request.POST, request.FILES)
+        if form.is_valid():
+            url = form.save(commit=False)
+            url.proposal = proposal
+            url.save()
+            return redirect("proposal_detail", proposal.pk)
+    else:
+        form = SupportingURLCreateForm()
+
+    return render(request, "proposals/url_create.html", {
+        "proposal": proposal,
+        "form": form,
+    })
+
+@login_required
+def url_delete(request, pk):
+    url = get_object_or_404(SupportingURL, pk=pk)
+    proposal_pk = url.proposal.pk
+
+    if request.method == "POST":
+        url.delete()
+
     return redirect("proposal_detail", proposal_pk)

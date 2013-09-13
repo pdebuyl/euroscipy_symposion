@@ -65,7 +65,25 @@
                     {% else %}
                         <p>{% trans 'No supporting documents attached to this proposal.' %}</p>
                     {% endif %}
+
+                    <h3>{% trans 'Supporting URLs' %}</h3>
+                    {% if proposal.supporting_urls.exists %}
+                        <table class="table table-striped">
+                            {% for url in proposal.supporting_urls.all %}
+                                <tr>
+                                <td> <a href="{{ url.url }}">{{ url.description }}</a> </td>
+                                <td> <form style="margin: 0;" method="post" action="{% url proposal_url_delete url.pk %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-mini">{% trans 'delete' %}</button>
+                                    </form></a> </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    {% else %}
+                        <p>No supporting URLs attached to this proposal.</p>
+                    {% endif %}
                     <a class="btn btn-small{% if proposal.cancelled %} btn-disabled{% endif %}" href="{% url proposal_document_create proposal.pk %}"><i class="icon-upload"></i> {% trans 'Add Document' %}</a>
+                    <a class="btn btn-small{% if proposal.cancelled %} btn-disabled{% endif %}" href="{% url proposal_url_create proposal.pk %}"><i class="icon-upload"></i> {% trans 'Add URL' %}</a>
                 </div>
             {% endif %}
     
