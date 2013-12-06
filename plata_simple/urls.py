@@ -14,7 +14,7 @@ urlpatterns = patterns('',
     url(r'', include(shop.urls)),
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^$', lambda request: redirect('plata_product_list')),
+    url(r'^$', lambda request: redirect('plata_product_list'), name='plata_root'),
     url(r'^products/$', 'plata_simple.views.product_list',
         name='plata_product_list'),
     url(r'^products/(?P<object_id>\d+)/$', 'plata_simple.views.product_detail',
